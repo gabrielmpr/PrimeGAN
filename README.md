@@ -1,2 +1,7 @@
 # PrimeGAN
-GAN that produces prime numbers
+GAN that produces prime numbers.
+
+Here we consider a GAN which is supposed to generate prime numbers. We asssume the training data is the set of the first $n$ prime numbers, $\mathcal{X} = \{p_{1}, \ldots, p_{n} \}$. If the generator network produces a number $x
+, the discriminator will check whether this number is prime by checking whether the division between $x$ and $p_{i}$ is even. The discriminator then outputs $0$ if there is a prime number $p_{i}$ that is a divisor of $x$ and $D(x)=1$ otherwise. Over time, the generator would lean that it has to produce a number larger than all the prime numbers provided. Nevertheless, we cannot implement such a discriminator function since this should know the number of divisors of each number, in which case we know immediately whether a number is prime or not, so in this experiment we implement a randomly initialized discriminator which we train.
+
+As we see in the results obtained, the generator cannot learn how to produce only prime numbers, given that this would imply that it has learned the distribution of prime numbers, and we know this is currently impossible. In any case it is interesting to see how far the network can go in learning parts of this distribution. In general, the probability of picking a random integer and that it is a prime number is given by the Prime Number Theorem, and we see that our generator more or less agrees with this asymptotic estimation numerically.
